@@ -516,7 +516,7 @@ my $PRIMES := nqp::list_i(
     49871, 49877, 49891, 49919, 49921, 49927, 49937, 49939, 49943, 49957,
     49991, 49993, 49999 );
 
-sub calc_S (int \n, \Token = 'foo') {
+sub calc_S (int \n, \Token) {
     nqp::stmts(
       (my int $N = nqp::add_i(n, 1)),
       (my int $i = -1),
@@ -549,7 +549,7 @@ sub calc_S (int \n, \Token = 'foo') {
               (my int $ip = nqp::atpos_i($primes, $i)),
               nqp::say(nqp::concat(nqp::tostr_I(nqp::box_i(Token, Int)),
                 nqp::concat(' ', nqp::tostr_I(nqp::box_i($ip, Int))))),
-              (my $ii = nqp::sub_i($ip, 1)),
+              (my int $ii = nqp::sub_i($ip, 1)),
               nqp::while(
                 nqp::islt_i(($ii = nqp::add_i($ii, 1)), $N),
                 nqp::bindpos_i($d, $ii,
